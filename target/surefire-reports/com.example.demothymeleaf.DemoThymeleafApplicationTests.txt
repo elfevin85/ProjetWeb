@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demothymeleaf.DemoThymeleafApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.877 s <<< FAILURE! - in com.example.demothymeleaf.DemoThymeleafApplicationTests
+contextLoads  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'countryServiceImpl' defined in file [C:\Users\vincent\Documents\CEGEP\Session8\WebTransac\DemoThymeleaf\target\classes\com\example\demothymeleaf\Service\Impl\CountryServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demothymeleaf.Service.Mapper.CountryMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.example.demothymeleaf.Service.Mapper.CountryMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+

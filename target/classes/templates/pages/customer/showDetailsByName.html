@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details of the customer choose by name</title>
+</head>
+<body>
+<span>ID : </span><span th:text="${customer.customerId}"></span><br>
+<span>NOM : </span><span th:text="${customer.lastName}"></span><br>
+<span>PRÉNOM(S) : </span><span th:text="${customer.firstName}"></span><br>
+<span>EMAIL : </span><span th:text="${customer.email}"></span><br>
+<span>PAYS : </span><span th:text="${customer.address.city.country.country}"></span><br>
+<span>VILLE : </span><span th:text="${customer.address.city.city}"></span><br>
+<span>ADRESSE : </span><span th:text="${customer.address.address}"></span><br>
+<footer th:replace="/pages/fragments/footer.html::footer"></footer>
+</body>
+</html>

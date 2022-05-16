@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edition du client</title>
+</head>
+<body>
+<h1>Éditer le client</h1>
+<form action="#" th:action="@{/customer/edituser}"
+      th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>
+                <label>Nom: </label>
+            </td>
+            <td>
+                <input type="text" hidden th:field="*{customerId}"
+                       th:value="${customer.customerId}"/>
+                <input type="text" hidden th:field="*{store.storeId}"
+                       th:value="${customer.store.storeId}"/>
+                <input type="text" hidden th:field="*{address.addressId}"
+                       th:value="${customer.address.addressId}"/>
+                <input type="text" hidden th:field="*{active}"
+                       th:value="${customer.active}"/>
+                <input type="text" th:field="*{firstName}"
+                       th:value="${customer.firstName}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Prénom(s): </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{lastName}"
+                       th:value="${customer.lastName}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{email}"
+                       th:value="${customer.email}"/>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" value="Enregistrer"
+                       name="Enregistrer"/>
+            </td>
+            <td>
+                <input type="reset" value="Annuler" name="reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

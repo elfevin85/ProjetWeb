@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initialscale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tp Thymeleaf</title>
+</head>
+<body>
+<h1>Nouveau client</h1>
+<br/>
+<form action="#" th:action="@{/customer/adduser}"
+      th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>
+                <label>Nom: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{lastName}" name="Name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Prénom(s): </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{firstName}" name="Name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email: </label>
+            </td>
+            <td>
+                <input type="text" th:field="*{email}" name="Name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Active: </label>
+            </td>
+            <td>
+                <input type="checkbox" th:field="*{active}"
+                       name="button"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Store: </label>
+            </td>
+            <td>
+                <select th:field="*{storeId}">
+                    <option th:each="store : ${stores}"
+                            th:value="${store.storeId}"
+                            th:text="${store.storeId}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Adresses: </label>
+            </td>
+            <td>
+                <select th:field="*{addressId}">
+                    <option th:each="address : ${addresses}"
+                            th:value="${address.addressId}"
+                            th:text="${address.address}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <table>
+        <tr>
+            <td>
+                <input type="submit" value="Enregistrer"
+                       name="Enregistrer"/>
+            </td>
+            <td>
+                <input type="reset" value="Annuler" name="reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
