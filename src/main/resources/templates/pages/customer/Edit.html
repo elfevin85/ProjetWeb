@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/EditStyle.css}"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> <!-- jquery download-->
+    <title>Edition du client</title>
+</head>
+<body>
+<!--Premiere partie edit le client-->
+<h1>Éditer le client</h1>
+<span>Nom : </span><input th:value="${customer.firstName}"><br>
+<span>Prénom(s) : </span><input th:value="${customer.lastName}"><br>
+<span>Émail : </span><input th:value="${customer.email}"><br>
+<span>Pays : </span><select th:field="${customer.address.city.country.country}">
+    <option th:each="country: ${countries}" th:value="${country.address.city.country.country}" th:text="${country.address.city.country.country}"></option>
+</select><br>
+
+<span>Ville : </span><input th:value="${customer.address.city.city}"><br>
+<span>Addresse : </span><input th:value="${customer.address.address}"><br><br>
+<button id="SaveEdit" type="button">Save</button><br>
+
+
+<!-- deuxime partie Edit magasin-->
+<h1>Editer le magasin</h1>
+<select th:field="${customer.address.address}">
+    <option th:each="store: ${store}" th:value="${store.address.address}" th:text="${store.address.address}"></option>
+</select>
+
+<p>Date: <input type="text" id="datepicker"></p><br><br><br>
+</body>
+<input type="button" value="Click me" onclick="alert('Thanks... I feel much better now!');" style="font-size:2em;background:lime">
+<footer th:replace="/pages/fragments/footer.html::footer"></footer>
+</html>
+
+
+<!-- tout les import pour les template jquery aller sur leur site -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+</script>

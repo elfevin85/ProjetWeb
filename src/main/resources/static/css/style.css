@@ -1,0 +1,7 @@
+table, th, td{
+    border: 1px solid;
+    padding: 1px;
+    animation: cubic-bezier(1,2,3,4);
+    font-family: "Comic Sans MS", serif;
+    font-size: 12px;
+}

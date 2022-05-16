@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Liste des clients</title>
+</head>
+<body>
+<h1>Liste des clients</h1>
+<a th:href="@{/customer/adduser}">Nouveau</a>
+<!--<p>Nombre de résultats: <span th:text="${customer.size()}"></span></p>-->
+
+<form th:action="@{/customer/executeSearch}" th:object="${search}" method="get">
+    <div class="input-group w-50">
+        <input type="text" th:field="*{query}" class="form-control" placeholder="Nom/Prénom"/>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+<form th:action="@{/customer/nameSearch}" th:object="${search}"  method="get">
+    <div class="input-group w-25 pl-3 py-2">
+        <input type="text" th:field="*{name}" class="form-control" placeholder="prénom" />
+        <div class="input-group-append">
+            <input class="btn btn-outline-secondary" value="search" type="submit"/>
+        </div>
+    </div>
+</form>
+
+<table style="border: 1px solid;">
+    <thead>
+    <th>ID</th>
+    <th>NOM</th>
+    <th>PRÉNOM(S)</th>
+    <th>EMAIL</th>
+    <th>COUNTRY</th>
+    <th>VILLE</th>
+    <th>ADRESSE</th>
+    <th>ACTION</th>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+        <td>
+            <a th:href="'/customer/' + ${customer.customerId}"
+               th:text="${customer.customerId}"></a>
+        </td>
+        <td th:text="${customer.firstName}">FIRSTNAME</td>
+        <td th:text="${customer.lastName}">LASTNAME</td>
+        <td th:text="${customer.email}">EMAIL</td>
+        <td
+                th:text="${customer.address.city.country.country}">COUNTRY</td>
+        <td th:text="${customer.address.city.city}">CITY</td>
+        <td th:text="${customer.address.address}">ADRESSE</td>
+        <td>
+            <a th:href="'/customer/edit/' +
+${customer.customerId}">ÉDITER</a>
+            <a th:href="'/customer/showDetailOf' +
+${customer.firstName}">Detail</a>
+            <a th:href="'/customer/deleteUser/'+${customer.customerId}">Delete</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/pages/fragments/footer.html::footer"></footer>
+</body>
+</html>
